@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grade Checker</title>
+    <style>
+      body {
+        text-align: center;
+        padding-top: 20px;
+      background: linear-gradient(to right, #56ab2f, #a8e063);
+      }
+      input[type="number"], button{
+        margin: 10px;
+        padding: 8px;
+      }
+     
+      #grade-result {
+        margin-top: 15px;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      .grade-a {color: #12FF1D; }
+      .grade-b {color: #003587; }
+      .grade-c {color: #FFB100; }
+      .grade-d {color: #7D7D7D; }
+    </style>
+  </head>
+  <body>
+      <h1 class="title">Grade Checker</h1>
+      <label for="grade-check">Enter Your Grade (0:100):</label>
+      <input type="number" id="grade-check" min="0" max="100">
+      <button onclick="calc()">Check Grade</button>
+      <p id="grade-result">Grade: </p>
+      <script>
+        function calc(){
+          let gradecheck = document.getElementById("grade-check");
+          let score = Number(gradecheck.value);
+          let result = document.getElementById("grade-result");
+          if (score < 0 || score > 100){
+            result.innerHTML = "!ادخل نسبة صحيحة";
+            result.className = "";
+            return;
+          }
+          let grade, classname;
+          if(score >= 85){
+            grade = "A (امتياز)";
+            classname = "grade-a";
+          }else if(score >= 75){
+            grade = "B (جيد جدا)";
+            classname = "grade-b";
+          }else if(score >= 65){
+            grade = "C (جيد)";
+            classname = "grade-c";
+          }else if(score >= 50){
+            grade = "D (مقبول)";
+            classname = "grade-d";
+          }else{
+            grade = "F (راسب)";
+            classname = "";
+          }
+          result.innerHTML = "Grade: " + grade;
+          result.className = classname;
+        }
+      </script>
+  </body>
+</html>
